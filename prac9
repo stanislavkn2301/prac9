@@ -1,0 +1,27 @@
+def min_steps(x, y):
+    if x == y:
+        return 0
+    
+    steps = 0
+    current_position = x
+    previous_step = 0
+    step = 1
+    
+    while current_position != y:
+        steps += 1
+        current_position += step
+        next_step = min(y - current_position, step + 1)
+        
+        if current_position + next_step > y:
+            next_step = y - current_position
+        
+        previous_step = step
+        step = next_step
+    
+    return steps
+
+
+print(min_steps(45, 48))  
+print(min_steps(45, 49))  
+print(min_steps(45, 50))  
+print(min_steps(45, 51))  
